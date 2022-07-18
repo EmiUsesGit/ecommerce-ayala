@@ -1,24 +1,32 @@
 // Desafío: Simulador Interactivo
 
 let nombre = prompt("Por favor, ingresa tu nombre");
-let apellido = prompt("Por favor, ingresa tu apellido");
-let nombreCompleto = nombre + " " + apellido;
-let nota1 = parseInt (prompt("Por favor, ingresa tu primera nota de la materia"));
-let nota2 = parseInt (prompt("Por favor, ingresa tu segunda nota de la materia"));
-let nota3 = parseInt (prompt("Por favor, ingresa tu tercera nota de la materia"));
+let apellido = prompt("Por faovr, ingresa tu apellido");
+let nota1 = parseInt (prompt("Por favor, ingresa tu primera nota"));
+let nota2 = parseInt (prompt("Por favor, ingresa tu segunda nota"));
+let nota3 = parseInt (prompt("Por favor, ingresa tu tercer nota"));
 
-function calcularNota(nota1, nota2, nota3) {
-    total = nota1 + nota2 + nota3;
-    total = total/3;
-    return total;
+let listaNotas = [nota1, nota2, nota3];
+
+function operacionNotas(listaNotas) {
+    let operacionNotas = 0;
+    for (let i = 0; i < 3; i++) {
+    operacionNotas += listaNotas
+    }
+    return operacionNotas;
 }
 
-alert(calcularNota(nota1, nota2, nota3));
+let operador = operacionNotas(listaNotas);
 
-if (total === 10) {
-    alert (nombreCompleto + " " + "tu nota fue de: " + total + " ¡Aprobaste con sobresaliente, felicidades!")
-} else if (promedio > 6) {
-    alert (nombreCompleto + " " + "tu nota fue de: " + total + " ¡Aprobaste, felicidades!")
+function sacarPromedio(operador) {
+    let promedio = Math.round(operador/3);
+    return promedio;
+}
+
+let promedio1 = sacarPromedio(operador);
+
+if (promedio1 > 6) {
+    alert("Felicidades" + " " + nombre + " " + apellido + " ¡Aprobaste con sobresaliente!");
 } else {
-    alert (nombreCompleto + " " + "tu nota fue de: " + total + ". Lo siento, vas a tener que rendir...")
+    alert("Lo siento," + " " + nombre + " " + apellido + ", desaprobaste la materia...");
 }
