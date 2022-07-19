@@ -1,32 +1,28 @@
-// Desafío: Simulador Interactivo
+// Desafío complementario: Incorporar Arrays
 
-let nombre = prompt("Por favor, ingresa tu nombre");
-let apellido = prompt("Por faovr, ingresa tu apellido");
-let nota1 = parseInt (prompt("Por favor, ingresa tu primera nota"));
-let nota2 = parseInt (prompt("Por favor, ingresa tu segunda nota"));
-let nota3 = parseInt (prompt("Por favor, ingresa tu tercer nota"));
+class Productos{
+    constructor(id, nombre, precio, stock) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
 
-let listaNotas = [nota1, nota2, nota3];
-
-function operacionNotas(listaNotas) {
-    let operacionNotas = 0;
-    for (let i = 0; i < 3; i++) {
-    operacionNotas += listaNotas
+        if (stock == 0) {
+            alert ("Lo sentimos, no hay stock");
+        }
     }
-    return operacionNotas;
 }
 
-let operador = operacionNotas(listaNotas);
+const productos = ["Juegos PC", "Juegos PS4", "Juegos PS5", "Juegos XBOX", 
+"Juegos Nintendo Switch"];
 
-function sacarPromedio(operador) {
-    let promedio = Math.round(operador/3);
-    return promedio;
+function AgregarAlCarrito(productos) {
+    carritoDeCompra.push(productos);
+    console.log(productos);
 }
 
-let promedio1 = sacarPromedio(operador);
-
-if (promedio1 > 6) {
-    alert("Felicidades" + " " + nombre + " " + apellido + " ¡Aprobaste con sobresaliente!");
-} else {
-    alert("Lo siento," + " " + nombre + " " + apellido + ", desaprobaste la materia...");
+function QuitarDelCarrito(productos) {
+    carritoDeCompra.pop(productos);
+    console.log(productos);
 }
+
