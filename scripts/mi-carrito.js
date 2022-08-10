@@ -1,71 +1,109 @@
 //Declaro un array de objeto
 const productos = [
-    { id: 0, nombre: "The exorcism of God", stock: 4, precio: "400" , tipo:"alquiler", badge: "Terror", img: "../images/movies/The_Exorcism_of_God_movie.jpg"},
-    { id: 1, nombre: "Senior Year", stock: 2, precio: "700" , tipo:"alquiler", badge: "Comedia", img: "../images/movies/Senior_Year_movie.jpg"},
-    { id: 2, nombre: "The fault in our stars", stock: 1, precio: "1000" , tipo:"alquiler", badge: "Romántica", img: "../images/movies/Fault-in-our-stars-movie.jpg"},
-    { id: 3, nombre: "Star wars Episode I", stock: 0, precio: "1000" , tipo:"alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie_2.jpg"},
-    { id: 4, nombre: "Remember me", stock: 8, precio: "1000" , tipo:"alquiler", badge: "Romántica/Drama", img: "../images/movies/remember_ne_movie.jpg"},
-    { id: 5, nombre: "Red Notice", stock: 7, precio: "1000" , tipo:"alquiler", badge: "Comedia", img: "../images/movies/red_notice_movie.jpg"},
-    { id: 6, nombre: "The Unholy", stock: 0, precio: "1000" , tipo:"alquiler", badge: "Terror", img: "../images/movies/the_unholy_movie.jpg"},
-    { id: 7, nombre: "Star Wars: The Rise of Skywalker", stock: 0, precio: "650" , tipo:"alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie.jpg"},
-    { id: 8, nombre: "Volver al futuro II", stock: 4, precio: "400" , tipo:"venta", badge: "Comedia/Aventuras", img: "../images/movies/volver_al_futuro_movie.jpg"},
-    { id: 9, nombre: "X-men: The last stan", stock: 2, precio: "700" , tipo:"venta", badge: "Acción/Ficción", img: "../images/movies/x-men_movie.jpg"},
-    { id: 10, nombre: "Split", stock: 1, precio: "1000" , tipo:"venta", badge: "Suspenso", img: "../images/movies/fragmentado-movie.jpg"},
-    { id: 11, nombre: "Hellboy", stock: 0, precio: "1000" , tipo:"venta", badge: "Acción/Ficción", img: "../images/movies/hellboy_movie.jpg"},
-    { id: 12, nombre: "Jurassic Park I", stock: 8, precio: "1000" , tipo:"venta", badge: "Aventura", img: "../images/movies/jurassic-park-movie.jpg"},
-    { id: 13, nombre: "The forever Purge", stock: 7, precio: "1000" , tipo:"venta", badge: "Acción/+16", img: "../images/movies/La_Purga_Infinita_movie.jpg"},
-    { id: 14, nombre: "Piratas del Caribe: El cofre de la muerte", stock: 0, precio: "1000" , tipo:"venta", badge: "Comedia/Aventura", img: "../images/movies/piratas_del_caribe_movie.jpg"},
-    { id: 15, nombre: "Resident Evil", stock: 0, precio: "650", tipo:"venta", badge: "Terror/Acción", img: "../images/movies/resident_evil_movie.jpg"}
+    { id: 0, nombre: "The exorcism of God", stock: 4, precio: "400", tipo: "alquiler", badge: "Terror", img: "../images/movies/The_Exorcism_of_God_movie.jpg" },
+    { id: 1, nombre: "Senior Year", stock: 2, precio: "700", tipo: "alquiler", badge: "Comedia", img: "../images/movies/Senior_Year_movie.jpg" },
+    { id: 2, nombre: "The fault in our stars", stock: 1, precio: "1000", tipo: "alquiler", badge: "Romántica", img: "../images/movies/Fault-in-our-stars-movie.jpg" },
+    { id: 3, nombre: "Star wars Episode I", stock: 0, precio: "1000", tipo: "alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie_2.jpg" },
+    { id: 4, nombre: "Remember me", stock: 8, precio: "1000", tipo: "alquiler", badge: "Romántica/Drama", img: "../images/movies/remember_ne_movie.jpg" },
+    { id: 5, nombre: "Red Notice", stock: 7, precio: "1000", tipo: "alquiler", badge: "Comedia", img: "../images/movies/red_notice_movie.jpg" },
+    { id: 6, nombre: "The Unholy", stock: 0, precio: "1000", tipo: "alquiler", badge: "Terror", img: "../images/movies/the_unholy_movie.jpg" },
+    { id: 7, nombre: "Star Wars: The Rise of Skywalker", stock: 0, precio: "650", tipo: "alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie.jpg" },
+    { id: 8, nombre: "Volver al futuro II", stock: 4, precio: "400", tipo: "venta", badge: "Comedia/Aventuras", img: "../images/movies/volver_al_futuro_movie.jpg" },
+    { id: 9, nombre: "X-men: The last stan", stock: 2, precio: "700", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/x-men_movie.jpg" },
+    { id: 10, nombre: "Split", stock: 1, precio: "1000", tipo: "venta", badge: "Suspenso", img: "../images/movies/fragmentado-movie.jpg" },
+    { id: 11, nombre: "Hellboy", stock: 0, precio: "1000", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/hellboy_movie.jpg" },
+    { id: 12, nombre: "Jurassic Park I", stock: 8, precio: "1000", tipo: "venta", badge: "Aventura", img: "../images/movies/jurassic-park-movie.jpg" },
+    { id: 13, nombre: "The forever Purge", stock: 7, precio: "1000", tipo: "venta", badge: "Acción/+16", img: "../images/movies/La_Purga_Infinita_movie.jpg" },
+    { id: 14, nombre: "Piratas del Caribe: El cofre de la muerte", stock: 0, precio: "1000", tipo: "venta", badge: "Comedia/Aventura", img: "../images/movies/piratas_del_caribe_movie.jpg" },
+    { id: 15, nombre: "Resident Evil", stock: 0, precio: "650", tipo: "venta", badge: "Terror/Acción", img: "../images/movies/resident_evil_movie.jpg" }
 ]
 //Declaro un array vacío para guardar las peliculas seleccionadas.
-let carrito = [];
+let carrito = sessionStorage.getItem("carrito") == null ? [] : JSON.parse(sessionStorage.getItem("carrito"));
 //variable para la cantidad de productos del carrito en el Badge del menú.
 const cantidadProdBadge = document.querySelector("#cantidad-prod");
-
+//Cantidad del carrito en el menú.
+cantidadProdBadge.textContent = carrito.length;
 //Recorro carrito y genero cards html. PAGE alquiler.html.
 function cardsAlquiler() {
     let emptyList = document.querySelector("#cards-alquiler");
     for (let namePeli of productos) {
         let listadoCards = document.createElement("div");
-        let label;
-        if(namePeli.tipo == "alquiler"){
-            label = "Alquiler";
-        }else{
-            label = "Comprar";
+        let label = namePeli.tipo == "alquiler" ? "Alquilar" : "Comprar";
+        if (namePeli.stock <= 0) {
+            label = "Sin stock";
         }
         listadoCards.classList.add("col", "mb-5");
-        listadoCards.innerHTML = `
-        <div class="card h-100">
-        <!-- Sale badge-->
-        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${namePeli.badge}</div>
-        <!-- Product image-->
-        <img class="card-img-top" src="${namePeli.img}" alt="..." />
-        <!-- Product details-->
-        <div class="card-body p-4">
-        <div class="text-center text-dark">
-        <!-- Product name-->
-        <h5 class="fw-bolder">${namePeli.nombre}</h5>
-        <!-- Product price-->
-        $ ${namePeli.precio}
-        </div>
-        </div>
-        <!-- Product actions-->
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-        <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar-carrito" id="${namePeli.id}">${label}</a></div>
-        </div>
-        </div>
-        </div>
-        `;
+        if(existePeli(namePeli.id)){
+            listadoCards.innerHTML = `
+            <div class="card h-100">
+            <!-- Sale badge-->
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${namePeli.badge}</div>
+            <!-- Product image-->
+            <img class="card-img-top" src="${namePeli.img}" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+            <div class="text-center text-dark">
+            <!-- Product name-->
+            <h5 class="fw-bolder">${namePeli.nombre}</h5>
+            <!-- Product price-->
+            $ ${namePeli.precio}
+            </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar-carrito" id="${namePeli.id}" style="display:none">${label}</a>
+            <a class="btn btn-outline-dark mt-auto eliminar-carrito" id="remove-${namePeli.id}">Quitar</a></div>
+            </div>
+            </div>
+            </div>
+            `;
+        }else{
+            listadoCards.innerHTML = `
+            <div class="card h-100">
+            <!-- Sale badge-->
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">${namePeli.badge}</div>
+            <!-- Product image-->
+            <img class="card-img-top" src="${namePeli.img}" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+            <div class="text-center text-dark">
+            <!-- Product name-->
+            <h5 class="fw-bolder">${namePeli.nombre}</h5>
+            <!-- Product price-->
+            $ ${namePeli.precio}
+            </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar-carrito" id="${namePeli.id}">${label}</a>
+            <a class="btn btn-outline-dark mt-auto eliminar-carrito" id="remove-${namePeli.id}" style="display:none">Quitar</a></div>
+            </div>
+            </div>
+            </div>
+            `;
+        }
         emptyList.appendChild(listadoCards);
     }
     cargarEventListeners();
 }
 
+//Creo la funcion para validar que exista la película en el carrito.
+function existePeli(id) {
+    for (const pelicula of carrito) {
+        if (pelicula.id == id) {
+            return true;
+        }
+    }
+    return false;
+}
 
 //Función para agregar al carrito con click.
 function cargarEventListeners() {
     document.querySelectorAll(".agregar-carrito").forEach(peliculaBtn => {
         peliculaBtn.addEventListener("click", agregarPelicula);
+    })
+    document.querySelectorAll(".eliminar-carrito").forEach(peliculaBtn => {
+        peliculaBtn.addEventListener("click", eliminarPelicula);
     })
 }
 
@@ -80,10 +118,29 @@ function agregarPelicula(e) {
             sessionStorage.setItem("carrito", JSON.stringify(carrito));
             cantidadProdBadge.textContent = carrito.length;
             alert("Agregaste la película: " + peliculaSeleccionada.nombre);
-        } 
-        else { 
-            alert("No hay stock de la pelicula seleccionada."); 
+            let botonAgregar = document.getElementById(peliculaSeleccionada.id);
+            botonAgregar.style.display = "none";
+            let botonEliminar = document.getElementById("remove-" + peliculaSeleccionada.id);
+            botonEliminar.style.display = "inline-block";
         }
+        else {
+            alert("No hay stock de la pelicula seleccionada.");
+        }
+    }
+}
+
+//Eliminar producto del carrito.
+function eliminarPelicula(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("eliminar-carrito")) {
+        const peliculaSeleccionada = obtenerPeli(e.target.id.replace('remove-',''));
+        carrito = carrito.filter(pelicula => pelicula.id != peliculaSeleccionada.id);
+        sessionStorage.setItem("carrito", JSON.stringify(carrito));
+        cantidadProdBadge.textContent = carrito.length;
+        let botonAgregar = document.getElementById(peliculaSeleccionada.id);
+        botonAgregar.style.display = "inline-block";
+        let botonEliminar = document.getElementById("remove-" + peliculaSeleccionada.id);
+        botonEliminar.style.display = "none";
     }
 }
 

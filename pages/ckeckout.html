@@ -26,10 +26,10 @@
     <link href="form-validation.css" rel="stylesheet">
     <!-- Links locales -->
     <link rel="stylesheet" href="../css/main.css">
-
+    <script src="../scripts/checkout.js" defer></script>
 </head>
 
-<body onload="listaCheckout()">
+<body onload="listaCheckout(); cargarEventListenersCheck();">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary bg-gradient fixed-top">
         <div class="container">
@@ -163,20 +163,20 @@
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked
+                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" value="credit" checked
                                 required>
                             <label class="custom-control-label" for="credit">Tarjeta de Crédito</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" value="debit" required>
                             <label class="custom-control-label" for="debit">Tarjéta de Débito</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" value="paypal" required>
                             <label class="custom-control-label" for="paypal">Efectivo en el local</label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row methodPayment">
                         <div class="col-md-6 mb-3">
                             <label for="cc-name">Nombre de la tarjeta</label>
                             <input type="text" class="form-control" id="cc-name" placeholder="" required>
@@ -193,7 +193,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row methodPayment">
                         <div class="col-md-3 mb-3">
                             <label for="cc-expiration">Fecha de expiración</label>
                             <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
