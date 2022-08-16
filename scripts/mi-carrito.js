@@ -9,7 +9,7 @@ const productos = [
     { id: 6, nombre: "The Unholy", stock: 0, precio: "1000", tipo: "alquiler", badge: "Terror", img: "../images/movies/the_unholy_movie.jpg" },
     { id: 7, nombre: "Star Wars: The Rise of Skywalker", stock: 0, precio: "650", tipo: "alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie.jpg" },
     { id: 8, nombre: "Volver al futuro II", stock: 4, precio: "400", tipo: "venta", badge: "Comedia/Aventuras", img: "../images/movies/volver_al_futuro_movie.jpg" },
-    { id: 9, nombre: "X-men: The last stan", stock: 2, precio: "700", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/x-men_movie.jpg" },
+    { id: 9, nombre: "X-men: The last stand", stock: 2, precio: "700", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/x-men_movie.jpg" },
     { id: 10, nombre: "Split", stock: 1, precio: "1000", tipo: "venta", badge: "Suspenso", img: "../images/movies/fragmentado-movie.jpg" },
     { id: 11, nombre: "Hellboy", stock: 0, precio: "1000", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/hellboy_movie.jpg" },
     { id: 12, nombre: "Jurassic Park I", stock: 8, precio: "1000", tipo: "venta", badge: "Aventura", img: "../images/movies/jurassic-park-movie.jpg" },
@@ -117,14 +117,24 @@ function agregarPelicula(e) {
             carrito.push(peliculaSeleccionada);
             sessionStorage.setItem("carrito", JSON.stringify(carrito));
             cantidadProdBadge.textContent = carrito.length;
-            alert("Agregaste la película: " + peliculaSeleccionada.nombre);
+            Toastify({
+                text: "Agregaste la película: " + peliculaSeleccionada.nombre,
+                duration: 2000,
+                gravity:'top',
+                position: 'left',
+                style: {background:'linear-gradient(to right, #54af7f, #0cd366'}
+                }).showToast();
             let botonAgregar = document.getElementById(peliculaSeleccionada.id);
             botonAgregar.style.display = "none";
             let botonEliminar = document.getElementById("remove-" + peliculaSeleccionada.id);
             botonEliminar.style.display = "inline-block";
         }
         else {
-            alert("No hay stock de la pelicula seleccionada.");
+                Swal.fire({
+                    text: 'No hay stock de la pelicula seleccionada.',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
         }
     }
 }
@@ -141,6 +151,13 @@ function eliminarPelicula(e) {
         botonAgregar.style.display = "inline-block";
         let botonEliminar = document.getElementById("remove-" + peliculaSeleccionada.id);
         botonEliminar.style.display = "none";
+        Toastify({
+            text: "Eliminaste la película: " + peliculaSeleccionada.nombre + " del carrito",
+            duration: 2000,
+            gravity:'top',
+            position: 'left',
+            style: {background:'linear-gradient(to right, #ff0000, #ff1427'}
+            }).showToast();
     }
 }
 
