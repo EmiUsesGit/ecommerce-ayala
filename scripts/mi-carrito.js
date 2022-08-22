@@ -1,22 +1,9 @@
-//Declaro un array de objeto
-const productos = [
-    { id: 0, nombre: "The exorcism of God", stock: 4, precio: "400", tipo: "alquiler", badge: "Terror", img: "../images/movies/The_Exorcism_of_God_movie.jpg" },
-    { id: 1, nombre: "Senior Year", stock: 2, precio: "700", tipo: "alquiler", badge: "Comedia", img: "../images/movies/Senior_Year_movie.jpg" },
-    { id: 2, nombre: "The fault in our stars", stock: 1, precio: "1000", tipo: "alquiler", badge: "Romántica", img: "../images/movies/Fault-in-our-stars-movie.jpg" },
-    { id: 3, nombre: "Star wars Episode I", stock: 0, precio: "1000", tipo: "alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie_2.jpg" },
-    { id: 4, nombre: "Remember me", stock: 8, precio: "1000", tipo: "alquiler", badge: "Romántica/Drama", img: "../images/movies/remember_ne_movie.jpg" },
-    { id: 5, nombre: "Red Notice", stock: 7, precio: "1000", tipo: "alquiler", badge: "Comedia", img: "../images/movies/red_notice_movie.jpg" },
-    { id: 6, nombre: "The Unholy", stock: 0, precio: "1000", tipo: "alquiler", badge: "Terror", img: "../images/movies/the_unholy_movie.jpg" },
-    { id: 7, nombre: "Star Wars: The Rise of Skywalker", stock: 0, precio: "650", tipo: "alquiler", badge: "Ciencia Ficción", img: "../images/movies/star_wars_movie.jpg" },
-    { id: 8, nombre: "Volver al futuro II", stock: 4, precio: "400", tipo: "venta", badge: "Comedia/Aventuras", img: "../images/movies/volver_al_futuro_movie.jpg" },
-    { id: 9, nombre: "X-men: The last stand", stock: 2, precio: "700", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/x-men_movie.jpg" },
-    { id: 10, nombre: "Split", stock: 1, precio: "1000", tipo: "venta", badge: "Suspenso", img: "../images/movies/fragmentado-movie.jpg" },
-    { id: 11, nombre: "Hellboy", stock: 0, precio: "1000", tipo: "venta", badge: "Acción/Ficción", img: "../images/movies/hellboy_movie.jpg" },
-    { id: 12, nombre: "Jurassic Park I", stock: 8, precio: "1000", tipo: "venta", badge: "Aventura", img: "../images/movies/jurassic-park-movie.jpg" },
-    { id: 13, nombre: "The forever Purge", stock: 7, precio: "1000", tipo: "venta", badge: "Acción/+16", img: "../images/movies/La_Purga_Infinita_movie.jpg" },
-    { id: 14, nombre: "Piratas del Caribe: El cofre de la muerte", stock: 0, precio: "1000", tipo: "venta", badge: "Comedia/Aventura", img: "../images/movies/piratas_del_caribe_movie.jpg" },
-    { id: 15, nombre: "Resident Evil", stock: 0, precio: "650", tipo: "venta", badge: "Terror/Acción", img: "../images/movies/resident_evil_movie.jpg" }
-]
+//Declaro una variable global de productos de mi archivo JSON con Fetch:
+let productos =[];
+fetch('../scripts/productos.json')
+.then((response) => response.json())
+.then((productosJSON)=> {productos = productosJSON});
+
 //Declaro un array vacío para guardar las peliculas seleccionadas.
 let carrito = sessionStorage.getItem("carrito") == null ? [] : JSON.parse(sessionStorage.getItem("carrito"));
 //variable para la cantidad de productos del carrito en el Badge del menú.
